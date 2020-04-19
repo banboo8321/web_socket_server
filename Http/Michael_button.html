@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Michael's iButton</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		}
+		.slide-btn{
+			width:100px;
+			display:inline-block;
+			border:1px solid;
+			border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+			border-radius:5px;
+			position: relative;
+			overflow: hidden;
+			cursor: pointer;
+		}
+		.slide-btn .inner-on,.slide-btn .inner-off{
+			width:151px;
+			box-sizing:border-box;
+			display: inline-block;
+			position: relative;
+			left:0;
+			cursor: pointer;
+			transition:left 0.5s;
+		}
+		.inner-on .left,.inner-off .left{
+			width: 50px;
+			color: #fff;
+			text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+			background:#58b058;
+			text-align:center;
+			display: inline-block;
+			padding: 4px 0;
+		}
+		.inner-on .space,.inner-off .space{
+			width: 51px;
+			display: inline-block;
+			box-sizing:border-box;
+			padding: 4px 0;
+			color: #fff;
+			background-color: #f5f5f5;
+			border-left: 1px solid #cccccc;
+			border-right: 1px solid #cccccc;
+			text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+			background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+			border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+		}
+		.inner-on .right,.inner-off .right{
+			width: 50px;
+			color: #fff;
+			text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+			background:#f9a123;
+			text-align:center;
+			display: inline-block;
+			padding: 4px 0;
+		}
+	</style>
+</head>
+<body style="padding-top:50px;padding-left:50px;">
+	<div class="slide-btn">
+		<div class="inner-on" id="inner">
+			<input style="display:none;" type="checkbox" checked>
+			<span class="left">ON</span><span class="space">&nbsp;</span><span class="right">OFF</span>
+		</div>
+	</div>
+	<script type="text/javascript">
+		document.getElementById("inner").onclick = function() {
+			if (this.className == "inner-on") {
+				this.style.left = -51 + "px";
+				this.childNodes[1].checked = false;
+				this.className = "inner-off";
+			}else{
+				this.style.left = 0;
+				this.childNodes[1].checked = true;
+				this.className = "inner-on";
+			}
+		}
+	</script>
+</body>
+</html>
